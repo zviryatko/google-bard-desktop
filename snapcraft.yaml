@@ -10,11 +10,13 @@ description: |
 base: core20
 confinement: strict
 grade: stable
+architectures:
+  - amd64
 
 apps:
   google-bard:
     command: google-bard/google-bard --no-sandbox
-    extensions: [gnome-3-34]
+    extensions: [gnome-42-2204]
     plugs:
     - browser-support
     - network
