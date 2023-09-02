@@ -17,7 +17,7 @@ architectures:
 
 apps:
   google-bard:
-    command: "google-bard/Google\ Bard --no-sandbox"
+    command: "google-bard/google-bard --no-sandbox"
     extensions: [gnome]
     plugs:
     - browser-support
@@ -43,6 +43,7 @@ parts:
         npm install electron electron-packager
         npm run package-linux
         cp -rv ./release-builds/*linux* $SNAPCRAFT_PART_INSTALL/google-bard
+        mv $SNAPCRAFT_PART_INSTALL/google-bard/Google\ Bard $SNAPCRAFT_PART_INSTALL/google-bard/google-bard
     build-snaps:
     - node/20/stable
     build-packages:
