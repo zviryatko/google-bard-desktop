@@ -41,3 +41,4 @@ parts:
     stage-packages:
     - libnss3
     - libnspr4
+    - libc6
