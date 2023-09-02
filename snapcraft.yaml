@@ -16,7 +16,7 @@ architectures:
 apps:
   google-bard:
     command: google-bard/google-bard --no-sandbox
-    extensions: [gnome-42-2204]
+    extensions: [gnome]
     plugs:
     - browser-support
     - network
