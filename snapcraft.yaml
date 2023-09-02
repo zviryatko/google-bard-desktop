@@ -1,0 +1,41 @@
+name: google-bard
+version: '0.1'
+summary: Google Bard Desktop
+description: |
+  An unofficial desktop app for Google Bard.
+  
+  This is a desktop app for Google Bard https://bard.google.com/, a chatbot that uses Generative AI to have conversations with you.
+  
+  Build based on https://github.com/mantreshkhurana/Google-Bard-electron repository.
+base: core22
+confinement: strict
+grade: stable
+
+apps:
+  electron-packager-hello-world:
+    command: google-bard/google-bard --no-sandbox
+    extensions: [gnome-3-34]
+    plugs:
+    - browser-support
+    - network
+    - network-bind
+    # Correct the TMPDIR path for Chromium Framework/Electron to ensure
+    # libappindicator has readable resources.
+    environment:
+      TMPDIR: $XDG_RUNTIME_DIR
+
+parts:
+  google-bard:
+    plugin: nil
+    source: https://github.com/mantreshkhurana/Google-Bard-electron.git
+    override-build: |
+        npm install electron electron-packager
+        npm run package-linux
+        cp -rv ./release-builds/*linux* $SNAPCRAFT_PART_INSTALL/google-bard
+    build-snaps:
+    - node/20/stable
+    build-packages:
+    - unzip
+    stage-packages:
+    - libnss3
+    - libnspr4
