@@ -33,6 +33,13 @@ parts:
     plugin: nil
     source: https://github.com/mantreshkhurana/Google-Bard-electron.git
     override-build: |
+        # workaround for build.snapcraft.io builds
+        # https://bugs.launchpad.net/bugs/1886861
+        if [ -n "$http_proxy" ]; then
+          export ELECTRON_GET_USE_PROXY=1
+          export GLOBAL_AGENT_HTTP_PROXY="${http_proxy}"
+          export GLOBAL_AGENT_HTTPS_PROXY="${http_proxy}"
+        fi
         npm install electron electron-packager
         npm run package-linux
         cp -rv ./release-builds/*linux* $SNAPCRAFT_PART_INSTALL/google-bard
