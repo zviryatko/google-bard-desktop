@@ -7,12 +7,12 @@ description: |
   This is a desktop app for Google Bard https://bard.google.com/, a chatbot that uses Generative AI to have conversations with you.
   
   Build based on https://github.com/mantreshkhurana/Google-Bard-electron repository.
-base: core22
+base: core20
 confinement: strict
 grade: stable
 
 apps:
-  electron-packager-hello-world:
+  google-bard:
     command: google-bard/google-bard --no-sandbox
     extensions: [gnome-3-34]
     plugs:
