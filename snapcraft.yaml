@@ -1,5 +1,5 @@
 name: google-bard
-version: '0.1'
+version: '1.0.0'
 summary: Google Bard Desktop
 description: |
   An unofficial desktop app for Google Bard.
@@ -32,6 +32,7 @@ parts:
   google-bard:
     plugin: nil
     source: https://github.com/mantreshkhurana/Google-Bard-electron.git
+    source-tag: 1.0.0
     override-build: |
         # workaround for build.snapcraft.io builds
         # https://bugs.launchpad.net/bugs/1886861
