@@ -42,7 +42,7 @@ parts:
         fi
         npm install electron electron-packager
         npm run package-linux
-        cp -rv ./release-builds/*linux* $CRAFT_PRIME 
+        cp -rv ./release-builds/Google\ Bard-linux-x64/* $CRAFT_PRIME 
         mv $CRAFT_PRIME/Google\ Bard $CRAFT_PRIME/google-bard
     build-snaps:
     - node/20/stable
