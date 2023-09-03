@@ -19,7 +19,7 @@ apps:
   google-bard:
     command: "google-bard --no-sandbox"
     extensions: [gnome]
-    desktop: meta/ui/google-bard.desktop
+    # desktop: meta/ui/google-bard.desktop
     plugs:
     - browser-support
     - network
