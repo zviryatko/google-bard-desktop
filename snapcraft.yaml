@@ -19,10 +19,13 @@ apps:
   google-bard:
     command: "google-bard --no-sandbox"
     extensions: [gnome]
+    desktop: usr/share/applications/google-bard.desktop
     plugs:
     - browser-support
     - network
     - network-bind
+    - desktop
+    - desktop-legacy
     # Correct the TMPDIR path for Chromium Framework/Electron to ensure
     # libappindicator has readable resources.
     environment:
@@ -41,6 +44,9 @@ parts:
           export GLOBAL_AGENT_HTTP_PROXY="${http_proxy}"
           export GLOBAL_AGENT_HTTPS_PROXY="${http_proxy}"
         fi
+        mkdir -p snap/gui
+        echo -e "[Desktop Entry]\nName=Google Bard\nX-GNOME-FullName=Google Bard\nComment=Google Bard Desktop\nCategories=GNOME;Utility;\nExec=google-bard\nIcon=\${SNAP}/meta/gui/google-bard.png\nTerminal=false\nType=Application\nVersion=1.0.0" > snap/gui/google-bard.desktop
+        cp assets/icons/png/favicon.png snap/gui/google-bard.png
         npm install electron electron-packager
         npm run package-linux
         cp -rv ./release-builds/Google\ Bard-linux-x64/* $CRAFT_PRIME 
