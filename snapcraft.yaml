@@ -19,7 +19,7 @@ apps:
   google-bard:
     command: "google-bard --no-sandbox"
     extensions: [gnome]
-    desktop: snap/gui/google-bard.desktop
+    desktop: meta/gui/google-bard.desktop
     plugs:
     - browser-support
     - network
@@ -48,9 +48,9 @@ parts:
         npm run package-linux
         cp -rv ./release-builds/Google\ Bard-linux-x64/* $CRAFT_PRIME 
         mv $CRAFT_PRIME/Google\ Bard $CRAFT_PRIME/google-bard
-        mkdir -p $CRAFT_PRIME/snap/gui
-        echo -e "[Desktop Entry]\nName=Google Bard\nX-GNOME-FullName=Google Bard\nComment=Google Bard Desktop\nCategories=GNOME;Utility;\nExec=google-bard\nIcon=\${SNAP}/meta/gui/google-bard.png\nTerminal=false\nType=Application\nVersion=1.0.0" > $CRAFT_PRIME/snap/gui/google-bard.desktop
-        cp assets/icons/png/favicon.png $CRAFT_PRIME/snap/gui/google-bard.png
+        mkdir -p $CRAFT_PRIME/meta/gui
+        echo -e "[Desktop Entry]\nName=Google Bard\nX-GNOME-FullName=Google Bard\nComment=Google Bard Desktop\nCategories=GNOME;Utility;\nExec=google-bard\nIcon=\${SNAP}/meta/gui/google-bard.png\nTerminal=false\nType=Application\nVersion=1.0.0" > $CRAFT_PRIME/meta/gui/google-bard.desktop
+        cp assets/icons/png/favicon.png $CRAFT_PRIME/meta/gui/google-bard.png
     build-snaps:
     - node/20/stable
     build-packages:
